@@ -27,6 +27,7 @@ A C++ console-based banking system for managing users, accounts, and transaction
   - 💳 Transaction records
   - 🔐 Login logs
   - 💲 Currencies
+    
     **Note: Edit the general path in GeneralFiles.h based on your system configuration to properly access these files within the project.** 
 
 ## 🎯 Usage
