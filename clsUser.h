@@ -293,7 +293,7 @@ public:
 
 
         fstream MyFile;
-        MyFile.open(UsersPath, ios::in);//read Mode
+        MyFile.open("C:\\Users\\Ali\\source\\repos\\Course_19\\BankConsoleApp\\Users.txt", ios::in);//read Mode
 
         if (MyFile.is_open())
         {

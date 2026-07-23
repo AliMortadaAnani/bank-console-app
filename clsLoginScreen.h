@@ -45,6 +45,7 @@ private:
             CurrentUser = clsUser::Find(Username, Password);
 
             LoginFailed = CurrentUser.IsEmpty();
+            
 
         } while (LoginFailed);
 
