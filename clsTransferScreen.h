@@ -2,14 +2,14 @@
 #include <iostream>
 #include "clsScreen.h"
 #include "clsPerson.h"
-#include "clsBankClient.h"
+#include "clsClient.h"
 #include "clsInputValidate.h"
 
 class clsTransferScreen :protected clsScreen
 {
 
 private:
-    static void _PrintClient(clsBankClient Client)
+    static void _PrintClient(clsClient Client)
     {
         cout << "\nClient Card:";
         cout << "\n___________________\n";
@@ -25,7 +25,7 @@ private:
         string AccountNumber;
         cout << "\nPlease Enter Account Number to Transfer From: ";
         AccountNumber = clsInputValidate::ReadString();
-        while (!clsBankClient::IsClientExist(AccountNumber))
+        while (!clsClient::IsClientExist(AccountNumber))
         {
             cout << "\nAccount number is not found, choose another one: ";
             AccountNumber = clsInputValidate::ReadString();
@@ -33,7 +33,7 @@ private:
         return AccountNumber;
     }
 
-    static float ReadAmount(clsBankClient SourceClient)
+    static float ReadAmount(clsClient SourceClient)
     {
         float Amount;
 
@@ -56,11 +56,11 @@ public:
 
         _DrawScreenHeader("\tTransfer Screen");
 
-        clsBankClient SourceClient = clsBankClient::Find(_ReadAccountNumber());
+        clsClient SourceClient = clsClient::Find(_ReadAccountNumber());
 
         _PrintClient(SourceClient);
 
-        clsBankClient DestinationClient = clsBankClient::Find(_ReadAccountNumber());
+        clsClient DestinationClient = clsClient::Find(_ReadAccountNumber());
 
         _PrintClient(DestinationClient);
 

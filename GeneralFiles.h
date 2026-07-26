@@ -3,9 +3,9 @@
 #include <string>
 using namespace std;
 
-string GeneralPath = "C:\\Users\\Ali\\source\\repos\\Course_19\\BankConsoleApp";
-string CurrenciesPath = "C:\\Users\\Ali\\source\\repos\\Course_19\\BankConsoleApp\\Currencies.txt";
-string ClientsPath = "C:\\Users\\Ali\\source\\repos\\Course_19\\BankConsoleApp\\Clients.txt";
-string UsersPath = "C:\\Users\\Ali\\source\\repos\\Course_19\\BankConsoleApp\\Users.txt";
-string TransactionsPath = "C:\\Users\\Ali\\source\\repos\\Course_19\\BankConsoleApp\\TransfersLog.txt";
-string LoginRegisterPath = "C:\\Users\\Ali\\source\\repos\\Course_19\\BankConsoleApp\\LoginRegister.txt";
+// Relative paths: When run from Visual Studio, it looks inside your project directory automatically
+string CurrenciesPath = "Currencies.txt";
+string ClientsPath = "Clients.txt";
+string UsersPath = "Users.txt";
+string TransactionsPath = "TransfersLogs.txt";
+string LoginRegisterPath = "LoginLogs.txt";

@@ -2,7 +2,7 @@
 #include <iostream>
 #include "clsScreen.h"
 #include "clsPerson.h"
-#include "clsBankClient.h"
+#include "clsClient.h"
 #include "clsInputValidate.h"
 
 class clsUpdateClientScreen :protected clsScreen
@@ -10,7 +10,7 @@ class clsUpdateClientScreen :protected clsScreen
 {
 private:
 
-    static void _PrintClient(clsBankClient Client)
+    static void _PrintClient(clsClient Client)
     {
         cout << "\nClient Card:";
         cout << "\n___________________";
@@ -26,7 +26,7 @@ private:
 
     }
 
-    static void ReadClientInfo(clsBankClient& Client)
+    static void ReadClientInfo(clsClient& Client)
     {
         cout << "\nEnter FirstName: ";
         Client.FirstName = clsInputValidate::ReadString();
@@ -63,13 +63,13 @@ public:
         cout << "\nPlease Enter client Account Number: ";
         AccountNumber = clsInputValidate::ReadString();
 
-        while (!clsBankClient::IsClientExist(AccountNumber))
+        while (!clsClient::IsClientExist(AccountNumber))
         {
             cout << "\nAccount number is not found, choose another one: ";
             AccountNumber = clsInputValidate::ReadString();
         }
 
-        clsBankClient Client1 = clsBankClient::Find(AccountNumber);
+        clsClient Client1 = clsClient::Find(AccountNumber);
 
         _PrintClient(Client1);
 
@@ -87,20 +87,20 @@ public:
 
             ReadClientInfo(Client1);
 
-            clsBankClient::enSaveResults SaveResult;
+            clsClient::enSaveResults SaveResult;
 
             SaveResult = Client1.Save();
 
             switch (SaveResult)
             {
-            case  clsBankClient::enSaveResults::svSucceeded:
+            case  clsClient::enSaveResults::svSucceeded:
             {
                 cout << "\nAccount Updated Successfully :-)\n";
 
                 _PrintClient(Client1);
                 break;
             }
-            case clsBankClient::enSaveResults::svFaildEmptyObject:
+            case clsClient::enSaveResults::svFailedEmptyObject:
             {
                 cout << "\nError account was not saved because it's Empty";
                 break;

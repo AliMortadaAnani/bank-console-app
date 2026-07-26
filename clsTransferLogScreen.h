@@ -4,7 +4,7 @@
 #include "clsScreen.h"
 #include <iomanip>
 #include <fstream>
-#include "clsBankClient.h"
+#include "clsClient.h"
 
 
 class clsTransferLogScreen :protected clsScreen
@@ -12,7 +12,7 @@ class clsTransferLogScreen :protected clsScreen
 
 private:
 
-    static void PrintTransferLogRecordLine(clsBankClient::stTrnsferLogRecord TransferLogRecord)
+    static void PrintTransferLogRecordLine(clsClient::stTrnsferLogRecord TransferLogRecord)
     {
 
         cout << setw(8) << left << "" << "| " << setw(23) << left << TransferLogRecord.DateTime;
@@ -32,7 +32,7 @@ public:
     {
 
 
-        vector <clsBankClient::stTrnsferLogRecord> vTransferLogRecord = clsBankClient::GetTransfersLogList();
+        vector <clsClient::stTrnsferLogRecord> vTransferLogRecord = clsClient::GetTransfersLogList();
 
         string Title = "\tTransfer Log List Screen";
         string SubTitle = "\t    (" + to_string(vTransferLogRecord.size()) + ") Record(s).";
@@ -57,7 +57,7 @@ public:
             cout << "\t\t\t\tNo Transfers Available In the System!";
         else
 
-            for (clsBankClient::stTrnsferLogRecord Record : vTransferLogRecord)
+            for (clsClient::stTrnsferLogRecord Record : vTransferLogRecord)
             {
 
                 PrintTransferLogRecordLine(Record);

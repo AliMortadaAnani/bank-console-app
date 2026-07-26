@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include "clsScreen.h"
-#include "clsBankClient.h"
+#include "clsClient.h"
 #include "clsInputValidate.h"
 
 class clsDepositScreen : protected clsScreen
@@ -10,7 +10,7 @@ class clsDepositScreen : protected clsScreen
 
 private:
 
-    static void _PrintClient(clsBankClient Client)
+    static void _PrintClient(clsClient Client)
     {
         cout << "\nClient Card:";
         cout << "\n___________________";
@@ -44,13 +44,13 @@ public:
         string AccountNumber = _ReadAccountNumber();
 
 
-        while (!clsBankClient::IsClientExist(AccountNumber))
+        while (!clsClient::IsClientExist(AccountNumber))
         {
             cout << "\nClient with [" << AccountNumber << "] does not exist.\n";
             AccountNumber = _ReadAccountNumber();
         }
 
-        clsBankClient Client1 = clsBankClient::Find(AccountNumber);
+        clsClient Client1 = clsClient::Find(AccountNumber);
         _PrintClient(Client1);
 
         double Amount = 0;

@@ -2,14 +2,14 @@
 
 #include <iostream>
 #include "clsScreen.h"
-#include "clsBankClient.h"
+#include "clsClient.h"
 #include "clsInputValidate.h"
 #include <iomanip>
 
 class clsAddNewClientScreen : protected clsScreen
 {
 private:
-    static void _ReadClientInfo(clsBankClient& Client)
+    static void _ReadClientInfo(clsClient& Client)
     {
         cout << "\nEnter FirstName: ";
         Client.FirstName = clsInputValidate::ReadString();
@@ -30,7 +30,7 @@ private:
         Client.AccountBalance = clsInputValidate::ReadFloatNumber();
     }
 
-    static void _PrintClient(clsBankClient Client)
+    static void _PrintClient(clsClient Client)
     {
         cout << "\nClient Card:";
         cout << "\n___________________";
@@ -60,38 +60,45 @@ public:
 
         string AccountNumber = "";
 
-        cout << "\nPlease Enter Account Number: ";
+        cout << "\nPlease Enter Account Number: [type 'exit' to cancel] ";
         AccountNumber = clsInputValidate::ReadString();
-        while (clsBankClient::IsClientExist(AccountNumber))
+
+        while (clsClient::IsClientExist(AccountNumber))
         {
-            cout << "\nAccount Number Is Already Used, Choose another one: ";
+            cout << "\nAccount Number Is Already Used, Choose another one: [type 'exit' to cancel] ";
             AccountNumber = clsInputValidate::ReadString();
         }
 
-        clsBankClient NewClient = clsBankClient::GetAddNewClientObject(AccountNumber);
+        if (AccountNumber == "exit")
+        {
+            cout << "\nOperation cancelled by the user.\n";
+            return;
+        }
+
+        clsClient NewClient = clsClient::GetAddNewClientObject(AccountNumber);
 
 
         _ReadClientInfo(NewClient);
 
-        clsBankClient::enSaveResults SaveResult;
+        clsClient::enSaveResults SaveResult;
 
         SaveResult = NewClient.Save();
 
         switch (SaveResult)
         {
-        case  clsBankClient::enSaveResults::svSucceeded:
+        case  clsClient::enSaveResults::svSucceeded:
         {
             cout << "\nAccount Addeded Successfully :-)\n";
             _PrintClient(NewClient);
             break;
         }
-        case clsBankClient::enSaveResults::svFaildEmptyObject:
+        case clsClient::enSaveResults::svFailedEmptyObject:
         {
             cout << "\nError account was not saved because it's Empty";
             break;
 
         }
-        case clsBankClient::enSaveResults::svFaildAccountNumberExists:
+        case clsClient::enSaveResults::svFailedAccountNumberExists:
         {
             cout << "\nError account was not saved because account number is used!\n";
             break;

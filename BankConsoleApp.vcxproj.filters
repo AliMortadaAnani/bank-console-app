@@ -68,7 +68,7 @@
     <ClInclude Include="clsUser.h">
       <Filter>Header Files\Models</Filter>
     </ClInclude>
-    <ClInclude Include="clsBankClient.h">
+    <ClInclude Include="clsClient.h">
       <Filter>Header Files\Models</Filter>
     </ClInclude>
     <ClInclude Include="clsScreen.h">

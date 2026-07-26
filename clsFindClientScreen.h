@@ -2,14 +2,14 @@
 #include <iostream>
 #include "clsScreen.h"
 #include "clsPerson.h"
-#include "clsBankClient.h"
+#include "clsClient.h"
 #include "clsInputValidate.h"
 
 class clsFindClientScreen :protected clsScreen
 {
 
 private:
-    static void _PrintClient(clsBankClient Client)
+    static void _PrintClient(clsClient Client)
     {
         cout << "\nClient Card:";
         cout << "\n___________________";
@@ -39,13 +39,13 @@ public:
         string AccountNumber;
         cout << "\nPlease Enter Account Number: ";
         AccountNumber = clsInputValidate::ReadString();
-        while (!clsBankClient::IsClientExist(AccountNumber))
+        while (!clsClient::IsClientExist(AccountNumber))
         {
             cout << "\nAccount number is not found, choose another one: ";
             AccountNumber = clsInputValidate::ReadString();
         }
 
-        clsBankClient Client1 = clsBankClient::Find(AccountNumber);
+        clsClient Client1 = clsClient::Find(AccountNumber);
 
         if (!Client1.IsEmpty())
         {

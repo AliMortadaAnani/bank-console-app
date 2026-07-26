@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include "clsScreen.h"
-#include "clsBankClient.h"
+#include "clsClient.h"
 #include <iomanip>
 #include "clsUtil.h"
 
@@ -10,7 +10,7 @@ class clsTotalBalancesScreen : protected clsScreen
 
 private:
 
-    static void PrintClientRecordBalanceLine(clsBankClient Client)
+    static void PrintClientRecordBalanceLine(clsClient Client)
     {
         cout << setw(25) << left << "" << "| " << setw(15) << left << Client.AccountNumber();
         cout << "| " << setw(40) << left << Client.FullName();
@@ -22,7 +22,7 @@ public:
     static void ShowTotalBalances()
     {
 
-        vector <clsBankClient> vClients = clsBankClient::GetClientsList();
+        vector <clsClient> vClients = clsClient::GetClientsList();
 
         string Title = "\t  Balances List Screen";
         string SubTitle = "\t    (" + to_string(vClients.size()) + ") Client(s).";
@@ -38,13 +38,13 @@ public:
         cout << setw(25) << left << "" << "\t\t_______________________________________________________";
         cout << "__________________________\n" << endl;
 
-        double TotalBalances = clsBankClient::GetTotalBalances();
+        double TotalBalances = clsClient::GetTotalBalances();
 
         if (vClients.size() == 0)
             cout << "\t\t\t\tNo Clients Available In the System!";
         else
 
-            for (clsBankClient Client : vClients)
+            for (clsClient Client : vClients)
             {
                 PrintClientRecordBalanceLine(Client);
                 cout << endl;

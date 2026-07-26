@@ -54,10 +54,6 @@ private:
         return true;
     }
 
-    void _Log()
-    {
-
-    }
 
 public:
 

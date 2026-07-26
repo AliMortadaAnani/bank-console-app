@@ -14,16 +14,20 @@ class clsUser : public clsPerson
 {
 private:
 
+    
     enum enMode { EmptyMode = 0, UpdateMode = 1, AddNewMode = 2 };
     enMode _Mode;
+    
     string _UserName;
     string _Password;
     string _EncryptedPassword;
+    
     int _Permissions;
-
+    
     bool _MarkedForDelete = false;
 
     struct stLoginRegisterRecord;
+    
     static stLoginRegisterRecord _ConvertLoginRegisterLineToRecord(string Line, string Seperator = "#//#")
     {
         stLoginRegisterRecord LoginRegisterRecord;
@@ -293,7 +297,7 @@ public:
 
 
         fstream MyFile;
-        MyFile.open("C:\\Users\\Ali\\source\\repos\\Course_19\\BankConsoleApp\\Users.txt", ios::in);//read Mode
+        MyFile.open(UsersPath, ios::in);//read Mode
 
         if (MyFile.is_open())
         {

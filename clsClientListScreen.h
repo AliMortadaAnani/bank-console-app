@@ -2,14 +2,14 @@
 
 #include <iostream>
 #include "clsScreen.h"
-#include "clsBankClient.h"
+#include "clsClient.h"
 #include <iomanip>
 
 class clsClientListScreen :protected clsScreen
 {
 
 private:
-    static void PrintClientRecordLine(clsBankClient Client)
+    static void PrintClientRecordLine(clsClient Client)
     {
 
         cout << setw(8) << left << "" << "| " << setw(15) << left << Client.AccountNumber();
@@ -31,7 +31,7 @@ public:
             return;// this will exit the function and it will not continue
         }
 
-        vector <clsBankClient> vClients = clsBankClient::GetClientsList();
+        vector <clsClient> vClients = clsClient::GetClientsList();
         string Title = "\t  Client List Screen";
         string SubTitle = "\t    (" + to_string(vClients.size()) + ") Client(s).";
 
@@ -53,7 +53,7 @@ public:
             cout << "\t\t\t\tNo Clients Available In the System!";
         else
 
-            for (clsBankClient Client : vClients)
+            for (clsClient Client : vClients)
             {
 
                 PrintClientRecordLine(Client);
